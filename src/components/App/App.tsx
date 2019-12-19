@@ -16,11 +16,10 @@ const App: React.FC = () => {
                 <ListItem/>
             </Route>
 
-            <Route
-                path="/people/:id/"
-                render={({ match}) => {
-                    return <Content idx={match.params.id}/>
-                }}/>
+            <Route path="/people/:id/">
+                <Content/>
+            </Route>
+
         </Router>
     )
 
