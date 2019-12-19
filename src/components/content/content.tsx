@@ -22,7 +22,7 @@ const Content: React.FC<Interface> = (props: Interface) => {
     });
 
     // @ts-ignore
-    const img = swapi.getPhoto(id.match());
+    const img = swapi.getPhoto(id);
 
     // @ts-ignore
     swapi.getPerson(id).then((item) => {
