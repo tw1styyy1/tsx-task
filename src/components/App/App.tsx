@@ -5,7 +5,6 @@ import {ListItem} from "../list-item/ListItem";
 import {Content} from "../content/content";
 import './App.scss'
 
-
 const App: React.FC = () => {
 
     return(
