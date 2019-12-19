@@ -2,8 +2,7 @@ export class Data {
 
     getHeader = () => {
         const header = [
-            {id: 1, name: "Заметки", href: '/notes'},
-            {id: 2, name: "Персонажи", href: '/'},
+            {id: 1, name: "Персонажи", href: '/'},
         ];
         return header;
     };
