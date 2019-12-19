@@ -2,7 +2,7 @@ export class Swapi {
 
     _apiBase = 'https://swapi.co/api';
 
-    getPhoto(id:number){
+    getPhoto(id:any){
         const obj = ['null',"https://vignette.wikia.nocookie.net/ru.starwars/images/d/d9/Luke-rotjpromo.jpg/revision/latest?cb=20061127144734",
         'https://vignette.wikia.nocookie.net/ru.starwars/images/3/35/C-3PO.png/revision/latest?cb=20131231163604','https://vignette.wikia.nocookie.net/ru.starwars/images/e/eb/ArtooTFA2-Fathead.png/revision/latest?cb=20151106094927',
         'http://images.starwarscostumes.com/products/10008/1-1/authentic-replica-darth-vader-costume.jpg', 'https://vignette.wikia.nocookie.net/ru.starwars/images/9/9b/Princessleiaheadwithgun.jpg/revision/latest/scale-to-width-down/500?cb=20160718082114',
@@ -24,17 +24,16 @@ export class Swapi {
     }
 
     getParams(person:any, id:any) {
-        const obj = {
+        return {
             id: id,
             name: person.name,
             span: person.gender,
             hairColor: person.hair_color,
             eyeColor: person.eye_color
         };
-        return obj;
     }
 
-    async getPerson(id:number) {
+    async getPerson(id:any) {
         const person = await this.getResource('/people/',id);
         return this.getParams(person, id);
     }
@@ -45,11 +44,10 @@ export class Swapi {
     }
 
     transformPerson(person: { name: any , href: string}){
-        const obj = {
+        return {
             name: person.name,
             href: `/${person.name}`,
         };
-        return obj;
     }
 
 }

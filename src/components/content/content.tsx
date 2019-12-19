@@ -4,15 +4,11 @@ import {useState} from "react";
 import { useParams } from 'react-router-dom';
 import './content.scss';
 
-interface Interface {
-    idx?:any,
-}
+const Content: React.FC = () => {
 
-const Content: React.FC<Interface> = (props: Interface) => {
-
-    let { id } = useParams();
-
+    const { id } = useParams();
     const swapi = new Swapi();
+    const img = swapi.getPhoto(id);
 
     const [state, setState] = useState({
         name: null,
@@ -21,10 +17,6 @@ const Content: React.FC<Interface> = (props: Interface) => {
         eyeColor: null
     });
 
-    // @ts-ignore
-    const img = swapi.getPhoto(id);
-
-    // @ts-ignore
     swapi.getPerson(id).then((item) => {
         setState({
             name: item.name,

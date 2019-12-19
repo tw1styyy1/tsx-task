@@ -11,15 +11,12 @@ const App: React.FC = () => {
     return(
         <Router>
             <Header/>
-
             <Route exact path={'/'}>
                 <ListItem/>
             </Route>
-
             <Route path="/people/:id/">
                 <Content/>
             </Route>
-
         </Router>
     )
 
