@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Header} from "../header/Header";
 import {ListItem} from "../list-item/ListItem";
 import {Content} from "../content/content";
-import './App.css'
+import './App.scss'
 
 
 const App: React.FC = () => {

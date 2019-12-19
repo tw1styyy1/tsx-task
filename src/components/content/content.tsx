@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './content.css';
 import {Swapi} from "../App/swapi";
 import {useState} from "react";
+import './content.scss';
 
 interface Interface {
     idx:any,

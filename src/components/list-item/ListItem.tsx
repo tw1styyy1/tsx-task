@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './ListItem.css';
 import {Link} from "react-router-dom";
 import {Data} from "../App/data";
+import './ListItem.scss';
 
 const ListItem: React.FC = () => {
 
