@@ -5,9 +5,9 @@ import {useParams} from 'react-router-dom';
 import './content.scss';
 
 interface PersonVale{
-    name?: string,
-    hairColor?: string,
-    eyeColor?: string,
+    name: string,
+    hairColor: string,
+    eyeColor: string,
 }
 
 const Content: React.FC = () => {
@@ -21,25 +21,44 @@ const Content: React.FC = () => {
         eyeColor:'Загрузка...',
     });
 
+    const [error, setError] = useState(false);
+
     useEffect(updatePerson,[]);
+    
+    function onError() {
+        setError(true)
+    }
 
     function onPersonLoaded(person:PersonVale) {
         setState(person);
     }
 
     function updatePerson() {
-        swapi.getPerson(id).then(onPersonLoaded);
+        swapi.getPerson(id)
+            .then(onPersonLoaded)
+            .catch(onError);
     }
 
-    return(
-        <div className="content d-flex">
-            <div className="content-info">
-                <p className={state.name ? "name" : "none"}><span className="green">Имя персонажа: </span>{state.name}<br/></p>
-                <p className={state.hairColor ? "name" : "none"}><span className="green">Цвет волос: </span>{state.hairColor}</p>
-                <p className={state.eyeColor ? "name" : "none"}><span className="green">Цвет глаз: </span>{state.eyeColor}</p>
+    if (!error){
+        return(
+            <div className="content d-flex">
+                <div className="content-info">
+                    <p className="name"><span className="green">Имя персонажа: </span>{state.name}<br/></p>
+                    <p className="name"><span className="green">Цвет волос: </span>{state.hairColor}</p>
+                    <p className="name"><span className="green">Цвет глаз: </span>{state.eyeColor}</p>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return(
+            <div className="content d-flex">
+                <div className="content-info">
+                    <p className="name">Ничего не найдено</p>
+                </div>
+            </div>
+        )
+    }
+
 };
 
 export {Content};

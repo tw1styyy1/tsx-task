@@ -21,9 +21,8 @@ export class Swapi {
         const _apiBase = 'https://swapi.co/api';
         const res = await fetch(`${_apiBase}${url}${id}`);
         if (!res.ok) {
-            return {
-                name: "К сожалению, мы такого не нашли :(",
-            }
+            throw new Error(`Could not fetch ${url}` +
+                `, received ${res.status}`)
         }else {
             return await res.json();
         }
