@@ -4,21 +4,26 @@ import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import './content.scss';
 
+interface Interface {
+    name: string,
+    hairColor: string,
+    eyeColor: string
+}
+
 const Content: React.FC = () => {
 
     const { id } = useParams();
     const swapi = new Swapi();
-    const img = swapi.getPhoto(String(id));  // todo: fix me
 
     const [state, setState] = useState({
-        name:'...',
-        hairColor:'...',
-        eyeColor:'...',
+        name:'Загрузка...',
+        hairColor:'Загрузка...',
+        eyeColor:'Загрузка...',
     });
 
     useEffect(updatePerson,[]);
 
-    function onPersonLoaded(person:any) {
+    function onPersonLoaded(person:Interface) {
         setState(person);
     }
 
@@ -33,7 +38,6 @@ const Content: React.FC = () => {
                 <p className="name"><span className="green">Цвет волос: </span>{state.hairColor}</p>
                 <p className="name"><span className="green">Цвет глаз: </span>{state.eyeColor}</p>
             </div>
-            <img alt="" className={img ? "image" : "none"} src={img ? img : '#'}/>
         </div>
     )
 };
