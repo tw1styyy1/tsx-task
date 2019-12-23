@@ -13,7 +13,7 @@ const App: React.FC = () => {
             <Route exact path={'/'}>
                 <ListItem/>
             </Route>
-            <Route path="/people/:id/">
+            <Route exact path="/people/:id/">
                 <Content/>
             </Route>
         </Router>

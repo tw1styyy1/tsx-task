@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Link} from "react-router-dom";
-import {Data} from "../App/data";
+import {Data} from "../../services/data";
 import "./Header.scss";
 
 const Header: React.FC = () => {
